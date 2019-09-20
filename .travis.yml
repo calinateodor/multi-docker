@@ -7,7 +7,7 @@ before_install:
     - docker build -t calinate/multi-docker-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run calinate/multi-docker-test npm text -- --coverage
+    - docker run -e CI=true calinate/multi-docker-test npm test
 
 after_success:
     - docker build -t calinate/multi-client ./client
